@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Style Tabs</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .tab-container {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Tabs Row */
+    .tab-header {
+      display: flex;
+      background: #e8e8e8;
+      padding: 0 10px;
+      gap: 6px;
+      padding-top: 6px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      background: #dcdcdc;
+      border-radius: 7px 7px 0 0;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      border-bottom: 3px solid white;
+      font-weight: bold;
+    }
+
+    /* Content */
+    .tab-content {
+      padding: 25px;
+      display: none;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tab-container">
+
+    <!-- Tabs -->
+    <div class="tab-header">
+      <div class="tab-btn active" data-tab="tab1">Tab One</div>
+      <div class="tab-btn" data-tab="tab2">Tab Two</div>
+    </div>
+
+    <!-- Content -->
+    <div id="tab1" class="tab-content active">
+      <h2>Tab One Content</h2>
+      <p>
+        This is the content inside the first tab. You can add anything here — text, images, cards, anything.
+      </p>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <h2>Tab Two Content</h2>
+      <p>
+        Welcome to the second tab! You can place your own custom layout inside this content area.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // remove active from all
+        tabButtons.forEach(b => b.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+
+        // add active to clicked
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

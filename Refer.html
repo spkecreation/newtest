@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raj — Motion & UI Designer</title>
+  <meta name="description" content="Portfolio — Motion Graphics & UI Design by Raj. Motion graphics, posters, video editing, UI & web design." />
+
+  <style>
+    :root {
+      --bg: #fbfbfb;
+      --card: #ffffff;
+      --muted: #6b6b6b;
+      --text: #111111;
+      --accent: rgba(17,17,17,0.06);
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 6px 20px rgba(12,12,12,0.06);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding: 32px;
+    }
+
+    .site {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    nav { display: flex; gap: 14px; }
+    a.btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    a.btn.active {
+      background: var(--text);
+      color: white;
+    }
+
+    a.cta {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--text);
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    .hero { padding: 22px 12px; }
+    .services, .grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .chip {
+      padding: 8px 12px;
+      background: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.04);
+      font-size: 13px;
+    }
+
+    .cta-row { display: flex; gap: 12px; margin-top: 20px; }
+
+    .preview {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .section { margin-top: 34px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .card {
+      padding: 14px;
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    }
+
+    /* TOOLS SECTION */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .tool {
+      padding: 8px 14px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+
+    /* TAB CONTROLLER FOR PROJECTS + TOOLS */
+    .tab-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .tab-section.show {
+      display: block;
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      main { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px) {
+      body { padding: 18px; }
+      .site { padding: 20px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="logo">RAJ</div>
+        <div>
+          <div style="font-weight:700">Rishabh Raj</div>
+          <div style="font-size:13px;color:#6b6b6b;">
+            Motion Graphics · UI Design · Graphic Designing
+          </div>
+        </div>
+      </div>
+
+      <nav id="tabNav">
+        <a class="btn active" data-tab="projects">Selected Work</a>
+        <a class="btn" data-tab="tools">Tools I Use</a>
+        <a class="btn" href="#about">About</a>
+        <a class="cta" href="#contact">Hire / Contact</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="eyebrow" style="font-size:13px;color:#6b6b6b;margin-bottom:12px;">Motion & UI Designer — Portfolio</div>
+
+        <h1 style="font-size:34px;line-height:1.03;margin-bottom:8px;">
+          Motion that speaks. Interfaces that feel.
+        </h1>
+
+        <p style="color:#6b6b6b;max-width:62ch;margin-bottom:18px;">
+          I create motion graphics, posters, and UI designs that blend clarity with visual energy.
+        </p>
+
+        <!-- SERVICES -->
+        <div id="services" class="services">
+          <span class="chip">Motion Graphics</span>
+          <span class="chip">UI / Web Design</span>
+          <span class="chip">Video Editing</span>
+          <span class="chip">Ad & Social Posters</span>
+          <span class="chip">Presentations (PPT)</span>
+        </div>
+
+        <!-- CTA BUTTONS -->
+        <div class="cta-row">
+          <!-- <a class="cta" href="#contact">Hire me</a> -->
+          <a class="btn" data-tab="projects">View Work</a>
+          <a class="btn" data-tab="tools">Tools I Use</a>
+        </div>
+
+        <!-- TAB SECTION: PROJECTS -->
+        <div class="section tab-section show" id="projects">
+          <h3 style="font-size:18px;margin-bottom:12px;">Selected work</h3>
+
+          <div class="grid">
+
+            <div class="card" data-title="Campaign Motion — X" data-desc="30s social motion + posters">
+              <div class="thumb" style="height:120px;background:#eee;margin-bottom:10px;"></div>
+              <div class="proj-title" style="font-weight:600;">Campaign Motion — X</div>
+              <div class="proj-sub" style="font-size:13px;color:#6b6b6b;">Motion + Posters</div>
+            </div>
+
+            <div class="card" data-title="UI Concept — Product" data-desc="Landing & dashboard prototype">
+              <div class="thumb" style="height:120px;background:#eee;margin-bottom:10px;"></div>
+              <div class="proj-title" style="font-weight:600;">UI Concept — Product</div>
+              <div class="proj-sub" style="font-size:13px;color:#6b6b6b;">Figma • Prototype</div>
+            </div>
+
+            <div class="card" data-title="Corporate Deck — Brand" data-desc="Presentation design & motions">
+              <div class="thumb" style="height:120px;background:#eee;margin-bottom:10px;"></div>
+              <div class="proj-title" style="font-weight:600;">Corporate Deck — Brand</div>
+              <div class="proj-sub" style="font-size:13px;color:#6b6b6b;">PPT • Motion</div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="preview">
+
+        <div class="mock" style="height:160px;background:#f4f4f4;border-radius:10px;display:grid;place-items:center;color:#6b6b6b;">
+          Live preview / showreel area
+        </div>
+
+        <div class="meta" style="display:flex;justify-content:space-between;font-size:13px;color:#6b6b6b;">
+          <div>Available for freelance</div>
+          <div>Based in India</div>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="section" id="about">
+          <div style="display:flex;gap:18px;">
+            <div class="avatar" style="width:120px;height:120px;background:#fff;border-radius:14px;display:grid;place-items:center;font-weight:700;box-shadow:var(--shadow);"> @ </div>
+
+            <div>
+              <div style="font-weight:700;margin-bottom:6px;">About me</div>
+              <p style="color:#6b6b6b;">
+                I'm Raj — I create motion graphics, visual identities, and clean UI designs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="section" id="contact" style="margin-top:20px;">
+          <div style="font-weight:700;margin-bottom:8px;">Contact</div>
+
+          <div class="contact-row" style="display:flex;gap:12px;">
+            <div>
+              <div class="small" style="color:#6b6b6b;font-size:13px;">Email</div>
+              <div style="font-weight:600">digitalartbyraj@gmail.com</div>
+            </div>
+
+            <div>
+              <div class="small" style="color:#6b6b6b;font-size:13px;">Phone</div>
+              <div style="font-weight:600">+91 92641 03787</div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <!-- TOOLS TAB SECTION -->
+    <div class="section tab-section" id="tools">
+      <h3 style="font-size:18px;margin-bottom:12px;">Tools I Use</h3>
+
+      <div class="tools-list">
+        <span class="tool">Adobe Photoshop</span>
+        <span class="tool">Adobe Illustrator</span>
+        <span class="tool">Adobe After Effects</span>
+        <span class="tool">Figma</span>
+        <span class="tool">Adobe InDesign</span>
+        <span class="tool">Blender</span>
+        <span class="tool">Sketch</span>
+        <span class="tool">HTML5</span>
+        <span class="tool">CSS</span>
+        <span class="tool">Canva</span>
+      </div>
+    </div>
+
+    <footer>© <span id="year"></span> Raj — Motion Graphics & UI Design</footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Click cards preview
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        alert(card.dataset.title + "\n\n" + card.dataset.desc);
+      });
+    });
+
+    // TAB FUNCTIONALITY
+    const tabButtons = document.querySelectorAll('[data-tab]');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        // highlight active button
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // show section
+        tabSections.forEach(sec => sec.classList.remove('show'));
+        document.getElementById(target).classList.add('show');
+
+        // scroll smoothly
+        window.scrollTo({
+          top: document.getElementById(target).offsetTop - 40,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
